@@ -5,7 +5,7 @@ export default function HomePage(){
     const router=useRouter();
     const handleClick = (e) => {
     e.preventDefault()
-    router.push("/")
+    // router.push("/")
   }
     return(
         <>
