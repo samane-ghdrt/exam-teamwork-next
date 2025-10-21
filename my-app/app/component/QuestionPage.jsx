@@ -11,13 +11,17 @@ export default function QuestionPage(){
   }
   const{register,
     handleSubmit,
-    formState: { errors }}=useForm()
- 
+    formState: { errors }}=useForm();
+
+ const onSubmit = (data) => {
+    console.log("فرم ارسال شد ✅", data);
+    alert(`سؤال شما با عنوان "${data.Title}" ثبت شد!`);
+  };
     return(
         <>
      <Box
       sx={{
-        marginTop:"5",
+        mt:"5",
         display: "flex",
         justifyContent: "center", 
         // alignItems: "center", 
@@ -59,6 +63,7 @@ export default function QuestionPage(){
  <Grid size={{ xs:12, md: 12}}>
    <Box
       component="form"
+      onSubmit={handleSubmit(onSubmit)}
       sx={{  display: "flex",flexDirection: 'column', alignItems: 'flex-start'} }
       noValidate
       autoComplete="off"
@@ -84,7 +89,7 @@ export default function QuestionPage(){
         />
   {/* <input {...register("Description", { required: true })} /> */}
   {errors.Description && <p>Last name is required.</p>}
-  <button type="submit">onSubmit</button>
+  <button type="submit" variant="contained">onSubmit</button>
   </div>
   </Box>
  </Grid>
