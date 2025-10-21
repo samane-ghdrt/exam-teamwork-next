@@ -1,6 +1,7 @@
 'use client';
 import {Box, Button, Grid, Typography} from "@mui/material";
 import Image from 'next/image';
+import { Form } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import {useForm, SubmitHandler} from "react-hook-form"
 export default function QuestionPage(){
@@ -60,11 +61,11 @@ export default function QuestionPage(){
       <Box sx={{ fontSize: 'h6.fontSize', m: 1 }}>Ask Your Question </Box>
  </Grid>
  <Grid size={{ xs:12, md: 12}}>
-  <form onSubmit={handlerSubmit}>
-  <input {...register("exampleRequired", { required: true })} />
-  <input {...register("exampleRequired", { required: true })} />
-  <button>onSubmit</button>
-  </form>
+  <Form onSubmit={handlerSubmit}>
+  <input {...register("exampleRequired", { required: true })} />{errors.lastName && <p>Last name is required.</p>}
+  <input {...register("exampleRequired", { required: true })} />{errors.lastName && <p>Last name is required.</p>}
+  <button type="submit">onSubmit</button>
+  </Form>
  </Grid>
 </Grid>
 </Box>
