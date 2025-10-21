@@ -1,7 +1,6 @@
 'use client';
-import {Box, Button, Grid, Typography} from "@mui/material";
+import {Box, Button, Grid, TextField, Typography} from "@mui/material";
 import Image from 'next/image';
-import { Form } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import {useForm, SubmitHandler} from "react-hook-form"
 export default function QuestionPage(){
@@ -12,11 +11,8 @@ export default function QuestionPage(){
   }
   const{register,
     handleSubmit,
-    watch,
     formState: { errors }}=useForm()
-  const handlerSubmit=()=>{
-
-  }
+ 
     return(
         <>
      <Box
@@ -61,11 +57,36 @@ export default function QuestionPage(){
       <Box sx={{ fontSize: 'h6.fontSize', m: 1 }}>Ask Your Question </Box>
  </Grid>
  <Grid size={{ xs:12, md: 12}}>
-  <Form onSubmit={handlerSubmit}>
-  <input {...register("exampleRequired", { required: true })} />{errors.lastName && <p>Last name is required.</p>}
-  <input {...register("exampleRequired", { required: true })} />{errors.lastName && <p>Last name is required.</p>}
+   <Box
+      component="form"
+      sx={{  display: "flex",flexDirection: 'column', alignItems: 'flex-start'} }
+      noValidate
+      autoComplete="off"
+      
+    >
+      <div>
+    <TextField
+          id="title"
+          label="title"
+          type="password"
+          autoComplete="title"
+           {...register("Title", { required: true })}
+        />
+  {/* <input {...register("Title", { required: true })} />  */}
+  {errors.Title && <p>Last name is required.</p>}
+  <TextField
+          id="Description"
+          label="Description"
+          multiline
+          rows={4}
+          defaultValue="Description"
+           {...register("Description", { required: true })}
+        />
+  {/* <input {...register("Description", { required: true })} /> */}
+  {errors.Description && <p>Last name is required.</p>}
   <button type="submit">onSubmit</button>
-  </Form>
+  </div>
+  </Box>
  </Grid>
 </Grid>
 </Box>
