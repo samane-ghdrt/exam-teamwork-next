@@ -2,11 +2,19 @@
 import {Box, Button, Grid, Typography} from "@mui/material";
 import Image from 'next/image';
 import { useRouter } from "next/navigation";
-export default function HomePage(){
+import {useForm, SubmitHandler} from "react-hook-form"
+export default function QuestionPage(){
     const router=useRouter();
     const handleClick = (e) => {
     e.preventDefault()
     // router.push("/")
+  }
+  const{register,
+    handleSubmit,
+    watch,
+    formState: { errors }}=useForm()
+  const handlerSubmit=()=>{
+
   }
     return(
         <>
@@ -50,6 +58,13 @@ export default function HomePage(){
   </Grid>
  <Grid size={{ xs:12, md: 12}}>
       <Box sx={{ fontSize: 'h6.fontSize', m: 1 }}>Ask Your Question </Box>
+ </Grid>
+ <Grid size={{ xs:12, md: 12}}>
+  <form onSubmit={handlerSubmit}>
+  <input {...register("exampleRequired", { required: true })} />
+  <input {...register("exampleRequired", { required: true })} />
+  <button>onSubmit</button>
+  </form>
  </Grid>
 </Grid>
 </Box>
