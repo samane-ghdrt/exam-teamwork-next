@@ -24,7 +24,8 @@ export default function QuestionPage(){
         mt:"5",
         display: "flex",
         justifyContent: "center", 
-        // alignItems: "center", 
+        alignItems: "center", 
+        flexDirection:"column",
         // minHeight: "100vh",
         bgcolor: "background.default",
         color: "text.primary",
@@ -33,12 +34,13 @@ export default function QuestionPage(){
       }}
     >
 <Grid container
- spacing={2}
+//  spacing={2}
         justifyContent="center"
         alignItems="center"
-        maxWidth="md"
+        // maxWidth="md"
+        mb={5}
    >
-  <Grid size={{ xs: 6, md: 8 }}>
+  <Grid size={{ xs: 12, md: 5}}>
     
         <Typography style={{margin:5}}>
             Lorem ipsum dolor sit, amet consectetur
@@ -48,7 +50,7 @@ export default function QuestionPage(){
         </Typography>
    <Button variant="contained"onClick={handleClick} >go to guestions</Button>
   </Grid>
-  <Grid size={{ xs: 6, md: 4 }}>
+  <Grid size={{ xs: 12, md: 4 }}>
     
    <Image
     src="/download.jpg"
@@ -56,21 +58,35 @@ export default function QuestionPage(){
       height={100}
       alt="Picture of the author"
       style={{padding:4}}/>
-  </Grid>
- <Grid size={{ xs:12, md: 12}}>
       <Box sx={{ fontSize: 'h6.fontSize', m: 1 }}>Ask Your Question </Box>
- </Grid>
- <Grid size={{ xs:12, md: 12}}>
-   <Box
+  </Grid>
+ {/* <Grid size={{ xs:12, md: 4}}>
+      
+ </Grid> */}
+</Grid>
+<Box
       component="form"
       onSubmit={handleSubmit(onSubmit)}
-      sx={{  display: "flex",flexDirection: 'column', alignItems: 'flex-start'} }
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: 2,
+        mt: 5,
+        width: "100%",
+        maxWidth: 700, 
+        bgcolor: "background.paper",
+        p: 3,
+        borderRadius: 2,
+        boxShadow: 2,
+      } }
       noValidate
       autoComplete="off"
       
     >
-      <div>
+      
     <TextField
+    sx={{ width: "80%" }}
           id="title"
           label="title"
           type="password"
@@ -80,20 +96,19 @@ export default function QuestionPage(){
   {/* <input {...register("Title", { required: true })} />  */}
   {errors.Title && <p>Last name is required.</p>}
   <TextField
+  sx={{ width: "80%" }}
           id="Description"
           label="Description"
           multiline
           rows={4}
-          defaultValue="Description"
+          // defaultValue="Description"
            {...register("Description", { required: true })}
         />
   {/* <input {...register("Description", { required: true })} /> */}
   {errors.Description && <p>Last name is required.</p>}
-  <button type="submit" variant="contained">onSubmit</button>
-  </div>
+  <button type="submit" variant="contained" style={{ width: "80%" }}>onSubmit</button>
+  
   </Box>
- </Grid>
-</Grid>
 </Box>
         </>
     )
